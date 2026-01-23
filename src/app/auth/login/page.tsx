@@ -91,7 +91,7 @@ export default function Login() {
           <div className="flex items-center gap-2">
             <span className="font-semibold">Don't have an account?</span>
             <Link href={"/auth/register"}>
-              <span className="bg-black text-white py-0.5 px-3 rounded-lg flex items-center font-semibold transition-all duration-300 border-1 border-black hover:text-black hover:bg-white active:scale-95">
+              <span className="bg-black text-white py-0.5 px-3 rounded-lg flex items-center font-semibold transition-all duration-300 border border-black hover:text-black hover:bg-white active:scale-95">
                 Sign up
               </span>
             </Link>
