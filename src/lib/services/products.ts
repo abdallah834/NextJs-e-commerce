@@ -8,7 +8,7 @@ export async function getAllProducts() {
         // revalidates data every hour
         revalidate: 3600,
       },
-    }
+    },
   );
   const { data } = await response.json();
   if (!response.ok) {
@@ -28,7 +28,7 @@ export async function getProductDetails(id: string) {
         // revalidates data every hour
         revalidate: 3600,
       },
-    }
+    },
   );
   const { data } = await response.json();
   if (!response.ok) {

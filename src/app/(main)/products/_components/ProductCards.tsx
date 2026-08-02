@@ -10,11 +10,6 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { addToCart } from "@/lib/services/cart";
-import {
-  addToWishList,
-  getUserWishlist,
-  removeWishListItem,
-} from "@/lib/services/wishlist";
 import { Icon } from "@iconify-icon/react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -90,10 +85,10 @@ export default function ProductCards({ product }: { product: IProduct }) {
               <Image
                 src={`${product?.imageCover}`}
                 alt="picture"
-                width={"180"}
-                height={"300"}
-                className="rounded-md "
-                loading="lazy"
+                width={120}
+                height={120}
+                className="rounded-md w-fit h-fit"
+                loading="eager"
               />
             </div>
           </CardHeader>

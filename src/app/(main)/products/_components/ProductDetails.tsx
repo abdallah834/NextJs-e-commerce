@@ -21,7 +21,6 @@ export default function ProductDetails({ product }: { product: IProduct }) {
   const data = product;
   const soldAmount = data.sold;
   const { getUserCart } = useCart();
-
   const router = useRouter();
   const { status: userStatus } = useSession();
   async function handleAddToCart(productId: string) {
@@ -118,7 +117,7 @@ export default function ProductDetails({ product }: { product: IProduct }) {
                     ? `0 Units`
                     : // formatting the first 3 numbers returned from api
                       `${Math.ceil(
-                        Number(String(soldAmount).slice(0, 4))
+                        Number(String(soldAmount).slice(0, 4)),
                       )} Units`
                 }`}</span>
               </div>
