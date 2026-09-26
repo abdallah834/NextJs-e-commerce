@@ -3,7 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 // protected routing using middleware
 // server function components can be marked `async` if using `await` inside
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // clg works only in terminal with middleware
 
   // getting the token from JWT

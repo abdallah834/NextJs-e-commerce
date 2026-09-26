@@ -1,21 +1,18 @@
 "use client";
+import { useCart } from "@/app/(context)/CartContextProvider";
 import { IProduct } from "@/app/types/products.type";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
+import { addToCart } from "@/lib/services/cart";
 import { Icon } from "@iconify-icon/react/dist/iconify.mjs";
-import { Button } from "@/components/ui/button";
-import { getSessionToken } from "@/lib/server-utils";
-import { addToCart, getCartData } from "@/lib/services/cart";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useCart } from "@/app/(context)/CartContextProvider";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function ProductDetails({ product }: { product: IProduct }) {
   const data = product;
@@ -92,7 +89,7 @@ export default function ProductDetails({ product }: { product: IProduct }) {
             <span className="text-sm min-[340px]:text-xs min-[540px]:text-sm sm:text-md ms-3 mb-2 font-semibold text-zinc-400">{`(${data.ratingsQuantity} reviews) `}</span>
           </div>
           {/********************* Price ********************/}
-          <span className="block text-3xl font-bold">{`${data.price} EGP`}</span>
+          <span className="block text-3xl font-bold">{`EGP ${data.price.toFixed(2)}`}</span>
           {/********************* Description ********************/}
           <span className="block text-xl ms-2 font-semibold">Description:</span>
           <p className="font-semibold mb-2 text-center">{data.description}</p>

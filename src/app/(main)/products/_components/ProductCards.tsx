@@ -62,22 +62,6 @@ export default function ProductCards({ product }: { product: IProduct }) {
   return (
     <>
       <Card className="bg-zinc-800/15 py-3 relative max-h-[440px]">
-        {/********* Wishlist *********/}
-        <Button
-          className={`absolute text-3xl top-1 right-3 opacity-100 bg-black  rounded-xl p-1 flex justify-center items-center cursor-pointer ${
-            wishedFor === true || wishedIds?.includes(product.id)
-              ? `text-red-500`
-              : `text-white`
-          }`}
-          onClick={() => {
-            wishedFor === true || wishedIds?.includes(product.id)
-              ? handleRemoveFromWished()
-              : handleAddToWished();
-          }}
-        >
-          <Icon icon="tabler:heart-filled" />
-        </Button>
-
         <Link href={`/products/${product?.id}`}>
           <CardHeader className="p-0">
             {/********* product image *********/}
@@ -101,7 +85,7 @@ export default function ProductCards({ product }: { product: IProduct }) {
             </span>
             {/********* product price & rating *********/}
             <div className="pricing-rating flex justify-between items-center">
-              <span className="font-semibold tracking-wider">{`${product?.price} EGP`}</span>
+              <span className="font-semibold tracking-wider">{`EGP ${product?.price.toFixed(2)}`}</span>
               <div className="flex justify-center items-center gap-1.5">
                 <span>{`${product?.ratingsAverage}`}</span>
                 <Icon
@@ -112,13 +96,28 @@ export default function ProductCards({ product }: { product: IProduct }) {
             </div>
           </CardContent>
         </Link>
-        <CardFooter>
+        <CardFooter className="px-0 justify-center gap-3">
           {/********* add to cart *********/}
           <Button
-            className="bg-black text-white w-full rounded-full font-semibold py-2 cursor-pointer *:transition-all *:duration-300 transition duration-300  hover:bg-linear-90  hover:from-white hover:from-[-20%] hover:via-black hover:via-50% hover:to-white hover:to-130% flex"
+            className="bg-black w-33 text-white rounded-full font-semibold cursor-pointer *:transition-all *:duration-300 transition duration-300 hover:bg-linear-90  hover:from-white hover:from-[-20%] hover:via-black hover:via-50% hover:to-white hover:to-130% flex"
             onClick={() => handleAddToCart(product.id)}
           >
             <span className="group-hover:text-white">Add to Cart</span>
+          </Button>
+          {/********* Wishlist *********/}
+          <Button
+            className={`opacity-100 p-3 bg-black rounded-xl flex justify-center items-center cursor-pointer ${
+              wishedFor === true || wishedIds?.includes(product.id)
+                ? `text-red-500`
+                : `text-white`
+            }`}
+            onClick={() => {
+              wishedFor === true || wishedIds?.includes(product.id)
+                ? handleRemoveFromWished()
+                : handleAddToWished();
+            }}
+          >
+            <Icon icon="tabler:heart-filled" className="text-lg" />
           </Button>
         </CardFooter>
       </Card>
